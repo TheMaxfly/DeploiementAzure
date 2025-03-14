@@ -25,12 +25,14 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user = True
 
     def form_valid(self, form):
+        print("ok")
         email = form.cleaned_data.get('username')  # Récupère l'email
         password = form.cleaned_data.get('password')  # Récupère le mot de passe
         
         try:
             # Essaye de te connecter via l'API
             response = APIClient.login(email, password)
+            print(response)
             if response and 'access_token' in response:
                 token = response['access_token']
                 self.request.session['token'] = token
@@ -63,6 +65,13 @@ class CustomLoginView(LoginView):
     
     def get_redirect_url(self):
         redirect('accounts:dashboard')
+    def form_invalid(self, form):
+        password = form.get('password')  # Récupère le mot de passe
+        print(password)
+        print(form.errors)
+        print(form)
+        return super().form_invalid(form) 
+    
 
 class CustomLogoutView(LogoutView):
     next_page = reverse_lazy('accounts:login')
