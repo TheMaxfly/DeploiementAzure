@@ -1,0 +1,33 @@
+Django==5.0.0
+alembic==1.14.1
+catboost==1.2.7
+django-widget-tweaks==1.5.0
+gunicorn>=21.2.0
+pandas==2.2.3
+pydantic==2.10.6
+pydantic-settings==2.7.1
+pyodbc>=4.0.39
+sqlmodel==0.0.22
+mssql-django
+django-cors-headers==4.7.0
+requests
+channels
+django-pyodbc-azure
+six
+
+
+
+
+
+
+
+
+#COMMANDES REDIS
+#sudo service redis stop
+# ou
+#sudo systemctl stop redis
+
+# Puis redémarrer
+#sudo service redis start
+# ou
+#sudo systemctl start redis
